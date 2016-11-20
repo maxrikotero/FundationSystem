@@ -1,0 +1,7 @@
+﻿<div {{bind-attr class=":form-group this.labelText::no-margin-bottom"}}>
+    {{#if this.labelText}}<label {{bind-attr for=this.inputId class="this.labelSm2:col-sm-2:col-sm-4 :control-label"}}>{{this.labelText}}</label>{{/if}}
+    <div {{bind-attr class="this.inputCellClass"}}>
+        {{input type=this.ctype class=this.cClass id=this.inputId value=this.cvalue placeholder=this.placeholder disabled=this.cdisabled}}
+        {{#if this.errorText}}<div {{bind-attr id=this.errorDivId}} class="validation-error">{{this.errorText}}</div>{{/if}}
+    </div>
+</div>

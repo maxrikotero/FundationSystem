@@ -1,0 +1,14 @@
+﻿{{!#if session.isAuthenticated}}
+<div class="wrapper">
+    {{partial 'systemheader'}}
+    {{partial 'sidemenu'}}
+    <div class="content-wrapper" style="min-height: 566px;">
+        {{outlet main}}
+    </div>
+</div>
+{{!else}}
+    {{outlet login}}
+{{!/if}}
+{{partial 'spinner'}}
+{{outlet modal}}
+{{outlet modalmodal}}

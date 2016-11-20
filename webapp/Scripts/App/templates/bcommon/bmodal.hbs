@@ -1,0 +1,38 @@
+﻿<div class="modal-dialog" {{bind-attr id="view.modalDialogId"}}>
+    <div class="modal-content">
+        <div {{bind-attr class="showHeaderBlue:modal-header-border-blue:modal-header"}}>
+            {{#if showCloseButton}}<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>{{/if}}
+            {{#if showTitleStatus}}<h4 class="modal-title">{{{titleText}}}&nbsp;&nbsp;<span {{bind-attr class=":text-bold isOcupado:text-light-blue:text-green"}}class="text-bold text-light-blue">{{{titleStatus}}}</span></h4>
+            {{else}}
+            <h4 class="modal-title">{{{titleText}}}</h4>
+            {{/if}}
+        </div>
+        <div class="modal-body" {{bind-attr id="view.modalBodyId"}}>
+            {{yield}}
+        </div>
+        {{#unless hideFooter}}
+        <div class="modal-footer">
+            {{#if leftButton.show}}
+            <button type="button" {{bind-attr class=":btn leftButton.css"}} {{action leftButton.action view}}>{{{leftButton.text}}}</button>
+            {{/if}}
+            {{#if showCancelButton}}
+            <button type="button" class="btn btn-default" {{action 'cancel' view}}>{{{cancelButtonText}}}</button>
+            {{/if}}
+            {{#if showSaveButton}}
+            <button type="button" {{bind-attr class=":btn isDanger:btn-danger:btn-primary" disabled=this.saveButtonDisabled}} {{action 'confirm' view}}>{{{saveButtonText}}}</button>
+            {{/if}}
+            {{#if showRotacionButton}}
+            <button type="button" {{bind-attr class=":btn :btn-default"}}  {{action 'rotacion'}}><i class="fa fa-exchange"></i>&nbsp;&nbsp;Rotación</button>
+            {{/if}}
+            {{#if showAltaButton}}
+            <button type="button" {{bind-attr class=":btn :btn-default"}}{{action 'alta' view}}>
+                <i class="fa fa-calendar-times-o"></i>&nbsp;&nbsp;Alta
+            </button>
+            {{/if}}
+            {{#if showAdmisionButton}}
+            <button type="button" {{bind-attr class=":btn :btn-default"}}  {{action 'admision' view}}><i class="fa fa-calendar-plus-o"></i>&nbsp;&nbsp;Admisión</button>
+            {{/if}}
+        </div>
+        {{/unless}}
+    </div>
+</div>

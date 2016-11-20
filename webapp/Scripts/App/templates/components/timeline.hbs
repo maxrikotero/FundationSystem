@@ -1,0 +1,48 @@
+﻿<ul {{bind-attr class=":timeline this.addClass"}}>
+    {{#each fecha in this.content}}
+    <li class="time-label cursor-pointer" {{action 'collapse' fecha}}>
+        <span class="bg-blue">
+            {{fecha.Fecha}}
+        </span>
+    </li>
+    {{#each item in fecha.Items}}
+    {{#unless item.exclude}}
+    <li {{bind-attr class="fecha.liClass :collapse :in"}}>
+        <!--<i class="fa fa-envelope bg-blue"></i>-->
+        {{#if showImg}}<img {{bind-attr src=item.UsuarioPicture alt=item.Usuario class="this.addUserClass"}}>{{/if}}
+        <div class="timeline-item">
+            <span class="time"><i class="fa fa-clock-o"></i>&nbsp;{{item.Hora}}</span>
+            {{#if hasUser}}
+            <h3 class="timeline-header">
+                {{#if item.labelType}}<label {{bind-attr class=":timeline-type-label item.labelType.Class"}}><i {{bind-attr class=":fa item.labelType.Icon"}}></i></label>{{/if}}
+                <a href="javascript:void(0)">
+                    {{item.Usuario}}
+                </a>
+            </h3>
+            <div class="timeline-body">
+                <div>{{item.Texto}}</div>
+                {{#if item.description}}
+                <div style="font-size: 11px">{{{item.description}}}</div>
+                {{/if}}
+            </div>
+            {{else}}
+            <div class="timeline-body">
+                <div><span style="font-weight:bold">{{item.titleText}}:</span> &nbsp;{{item.Texto}}</div>
+                {{#if item.description}}
+                <div style="font-size: 14px"><span style="font-weight:bold">{{item.titleDes}}:</span> &nbsp;{{{item.description}}}</div>
+                {{/if}}
+            </div>
+            {{/if}}
+
+            <!--<div class="timeline-footer">
+                <a class="btn btn-primary btn-xs">...</a>
+            </div>-->
+        </div>
+    </li>
+    {{/unless}}
+    {{/each}}
+    {{/each}}
+    <li class="margin-bottom-30">
+        <i class="fa fa-clock-o bg-gray"></i>
+    </li>
+</ul>

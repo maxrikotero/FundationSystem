@@ -1,0 +1,33 @@
+﻿<form role="form" class="form-signin" {{action "authenticate" on="submit" }}>
+    <table class="form-signin" cellspacing="0" cellpadding="0" style="border-collapse:collapse;">
+        <tbody>
+            <tr>
+                <td>
+                    <h2 class="form-signin-heading">Inicio de sesión</h2>
+                    {{input type="text" value=identification class="form-control active" placeholder="Usuario"}}
+                    {{input type="password" value=password class="form-control" placeholder="Contraseña"}}
+                    <div class="text-center padding-bottom-10">
+                        <div class="checkbox" data-toggle="tooltip" data-placement="bottom" title="Su contraseña no se guardará">
+                            <input id="chkRemember" type="checkbox">
+                            <label for="chkRemember">
+                                <span></span>Recordar mi Usuario
+                            </label>
+                        </div>
+                    </div>
+                    <div class="center-block">
+                        <button type="submit" class="btn btn-primary btn-lg center-block" id="bt-login" data-loading-text="Iniciando Sesión">Iniciar Sesión</button>
+                    </div>
+
+                    <!--<a href="javascript:void(0);" {{!action 'forgotp'}} class="pull-right padding-top-10">¿Olvidó su contraseña?</a>-->
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</form>
+<style>
+    body {
+        padding-top: 40px !important;
+        padding-bottom: 40px !important;
+        background-color: #EEE !important;
+    }
+</style>

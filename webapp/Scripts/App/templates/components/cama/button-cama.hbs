@@ -1,0 +1,31 @@
+﻿{{#each cama in this.camas}}
+{{#unless cama.hide}}
+<div type="button" {{bind-attr class=":btn :btn-default :btn-habitacion :no-padding cama.addClass"}} {{action 'selectCama' cama.id cama.estado}} style="margin-right: 10px;margin-bottom: 10px;">
+    <table class="habitaciones-cama no-header">
+        <tr>
+            <td {{bind-attr class="cama.isDisponible:span-icon-paciente-disponible cama.isOcupada:span-icon-paciente-nodisp cama.isBloqueada:span-icon-paciente-bloqueada"}}>
+                <div class="cama-num">
+                    {{cama.cama}}
+                </div>
+                <i class="cama-i imac-cama"></i>
+            </td>
+            <td {{bind-attr class="cama.isMale:icon-paciente-male:icon-paciente-female"}}>
+                {{#if cama.pid}}
+                <i class="imac-paciente"></i>
+                {{/if}}
+            </td>
+            <td>
+                {{#if cama.pid}}
+                <div class="paciente">
+                    Paciente:&nbsp;&nbsp;<b>{{cama.nombre}}</b>
+                </div>
+                <div class="paciente">
+                    Obra Social:&nbsp;&nbsp;<b>{{cama.obraSocial}}</b>
+                </div>
+                {{/if}}
+            </td>
+        </tr>
+    </table>
+</div>
+{{/unless}}
+{{/each}}

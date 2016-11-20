@@ -1,0 +1,12 @@
+﻿<div {{bind-attr class=":form-group this.labelText:no-margin-button"}}>
+    {{#if this.labelText}}<label {{bind-attr for=this.inputId class="this.labelSm2:col-sm-2:col-sm-4 :control-label"}}>{{this.labelText}}</label>{{/if}}
+    <div {{bind-attr class="this.inputDivClass"}}>
+        <div {{bind-attr class=":form-control this.showDomicilio:show-table"}}>
+            {{#if this.showDomicilio}}
+            <table class="telefono-domicilio-table" {{bind-attr id=this.id}}></table>
+            {{else}}
+            No se han cargado domicilio
+            {{/if}}
+        </div>
+    </div>
+</div>

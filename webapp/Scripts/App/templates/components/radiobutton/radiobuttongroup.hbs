@@ -1,0 +1,26 @@
+﻿<div {{bind-attr class=":form-group this.labelText::no-margin-bottom"}}>
+    {{#if this.labelText}}<label {{bind-attr for=this.inputId}} class="col-sm-4 control-label">{{this.labelText}}</label>{{/if}}
+    <div {{bind-attr class="this.labelText:col-sm-8:col-sm-12"}}>
+        <div {{bind-attr class="this.isValidated::validation-input-error"}}>
+            {{#each item in this.items}}
+                <label class="radio-inline">
+                    {{#ifp item.id 'equals' this.cvalue}}
+                        <input type="radio" {{bind-attr name=this.groupId value=item.id disabled="item.disabled:disabled:false"}} {{action 'updateValue' item.id on="change"}} checked="checked">
+                        <span {{bind-attr class="this.isValidated::validation-radio-error"}}></span>
+                        {{item.text}}
+                    {{else}}
+                        <input type="radio" {{bind-attr name=this.groupId value=item.id disabled="item.disabled:disabled:false"}} {{action 'updateValue' item.id on="change"}}>
+                    <span {{bind-attr class="this.isValidated::validation-radio-error"}}></span>
+                        {{item.text}}
+                    {{/ifp}}
+                </label>
+            {{/each}}
+        </div>
+        {{#if this.cfg.validate.text}}<div {{bind-attr id=this.errorDivId}} class="validation-error">{{this.cfg.validate.text}}</div>{{/if}}
+    </div>
+</div>
+<style>
+    .radio-inline {
+        padding: 6px 15px 6px 0 !important;
+    }
+</style>

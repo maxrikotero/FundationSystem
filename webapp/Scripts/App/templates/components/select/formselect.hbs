@@ -1,0 +1,20 @@
+﻿<div {{bind-attr class=":form-group this.labelText::no-margin-bottom"}}>
+    {{#if this.labelText}}<label {{bind-attr for=this.inputId}} class="col-sm-4 control-label">{{this.labelText}}</label>{{/if}}
+    <div {{bind-attr class="this.labelText:col-sm-8:col-sm-12"}}>
+        <table style="width: 100%; table-layout: fixed">
+            <tr>
+                <td style="width:100%">
+                    <div {{bind-attr id=this.cid class="this.isValidated::validation-input-error"}}>
+                        {{Select-Comp value=this.cvalue content=this.content placeholder=this.placeholder changeAction=this.cfg.changeAction allowClear=this.allowClear compElement=this._element query=this.query minimumInputLength=this.minimumInputLength enabled=this.cenabled}}
+                    </div>
+                </td>
+                {{#if this.addAction}}
+                <td style="padding-left:3px; width:26px">
+                    <button type="button" class="btn btn-xs btn-success" {{action 'addAction' on="click"}} {{bind-attr disabled=this.addDisabled}}><i class="fa fa-plus"></i></button>
+                </td>
+                {{/if}}
+            </tr>
+        </table>
+        {{#if this.errorText}}<div {{bind-attr id=this.errorDivId}} class="validation-error">{{this.errorText}}</div>{{/if}}
+    </div>
+</div>

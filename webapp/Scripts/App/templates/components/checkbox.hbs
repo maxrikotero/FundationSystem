@@ -1,0 +1,11 @@
+﻿<div {{bind-attr class="this.labelText:form-group"}}>
+    {{#if this.labelText}}<label {{bind-attr for=this.inputId}} class="col-sm-4 control-label">{{this.labelText}}</label>{{/if}}
+    <div {{bind-attr class="this.labelText:col-sm-8"}}>
+        <div {{bind-attr class=":checkbox this.disabled:disabled"}}>
+            <input {{bind-attr id=this.inputId disabled=this.disabled}} type="checkbox">
+            <label {{bind-attr for=this.inputId}}>
+                <span {{bind-attr class="this.disabled:disabled"}}></span>{{{this.chkText}}}
+            </label>
+        </div>
+    </div>
+</div>

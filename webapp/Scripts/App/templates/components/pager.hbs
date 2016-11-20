@@ -1,0 +1,10 @@
+﻿<div class="row row-pagination">
+    {{#if cfg.showAmount}}
+    <div class="col-xs-6 info-pagination">
+        Registros <b>{{data.primero}}</b> a <b>{{data.ultimo}}</b> - Total: <b>{{data.total}}</b>
+    </div>
+    {{/if}}
+    <div {{bind-attr class="cfg.showAmount:col-xs-6:col-xs-12 cfg.showAmount:text-right:text-center"}}>
+        <span {{bind-attr id=spanId}}></span>
+    </div>
+</div>

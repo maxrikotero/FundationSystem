@@ -1,0 +1,80 @@
+﻿<tr>
+    <td>Nombre</td>
+    <td>
+        {{#if this.viewAction}}
+            <a href="javascript:void(0)" {{action 'viewPac' paciente.Id}}>
+                {{paciente.Apellido}},&nbsp;{{paciente.Nombre}}
+            </a>
+        {{else}}
+            {{paciente.Apellido}},&nbsp;{{paciente.Nombre}}
+        {{/if}}
+    </td>
+</tr>
+<tr>
+    <td>Documento</td>
+    <td>{{paciente.TipoDocumentoShort}}&nbsp;-&nbsp;{{paciente.Documento}}</td>
+</tr>
+<tr>
+    <td>Documento AFIP</td>
+    <td>{{paciente.TipoDocumentoAfip}}&nbsp;-&nbsp;{{paciente.DocumentoAfip}}</td>
+</tr>
+<tr>
+    <td>Sexo</td>
+    <td>{{paciente.Sexo}}</td>
+</tr>
+<tr>
+    <td>Nacionalidad</td>
+    <td>{{paciente.Nacionalidad}}</td>
+</tr>
+<tr>
+    <td>Fecha de Nacimiento</td>
+    <td>{{Moment-Comp value=paciente.FechaNacimiento format="DD-MM-YYYY"}}</td>
+</tr>
+<tr>
+    <td>Estado Civil</td>
+    <td>{{paciente.EstadoCivil}}</td>
+</tr>
+{{#if paciente.OSocial}}
+<tr>
+    <td>Obra Social</td>
+    <td>{{paciente.OSocial}}</td>
+</tr>
+<tr>
+    <td>N° Afiliado</td>
+    <td>{{paciente.nAfiliado}}</td>
+</tr>
+<tr>
+    <td>Fecha de Vigencia</td>
+    <td>{{Moment-Comp value=paciente.fechaVigencia format="DD-MM-YYYY"}}</td>
+</tr>
+{{else}}
+{{#if this.showNoObra}}
+<tr>
+    <td>&nbsp;</td>
+    <td class="admision-datos-paciente-no-osocial">
+        No se puede completar la admisión<br />El paciente no tiene Obra Social
+    </td>
+</tr>
+{{/if}}
+{{/if}}
+{{#if this.editAction}}
+<tr>
+    <td>&nbsp;</td>
+    <td class="text-right">
+        <button type="button" {{bind-attr class=":btn :btn-primary this.buttonClass"}} {{action 'editPac' paciente.Id}}><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;Editar Paciente</button>
+    </td>
+</tr>
+{{/if}}
+{{#if this.patologia}}
+<tr>
+    <td class="padding-top-10">Patología</td>
+    <td class="padding-top-10">
+        {{this.patologia.text}}
+        {{#if this.patologia.description}}
+        &nbsp;<span style="color: #858585;font-size: 0.86em;">
+            {{this.patologia.description}}
+        </span>
+        {{/if}}
+    </td>
+</tr>
+{{/if}}

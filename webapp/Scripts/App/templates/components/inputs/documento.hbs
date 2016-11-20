@@ -1,0 +1,14 @@
+﻿<div {{bind-attr class=":form-group this.labelText::no-margin-bottom"}}>
+    {{#if this.labelText}}<label {{bind-attr for=this.inputId class="cfg.labelSm2:col-sm-2:col-sm-4 :control-label"}}>{{this.labelText}}</label>{{/if}}
+    <div {{bind-attr class="this.inputCellClass this.isValidated::validation-documento-error"}}>
+        <div class="row no-padding-left-right input-documento">
+            <div class="col-xs-4 col-md-6 no-padding-right">
+                {{Select-Comp value=this.ctdvalue content=this.tiposDocumentos placeholder=this.selectPlaceholder}}
+            </div>
+            <div class="col-xs-8 col-md-6 no-padding-left">
+                {{input type="text" class="form-control" id=this.inputId value=this.cvalue placeholder=this.placeholder}}
+            </div>
+        </div>
+        {{#if this.errorText}}<div {{bind-attr id=this.errorDivId}} class="validation-error">{{#if this.showTipoError}}{{this.errorText.tipo}}{{else}}{{this.errorText.numero}}{{/if}}</div>{{/if}}
+    </div>
+</div>

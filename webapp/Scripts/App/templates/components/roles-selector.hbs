@@ -1,0 +1,88 @@
+﻿<div {{bind-attr class="this.inModal::form-group this.inModal::no-margin-bottom"}}>
+    {{#unless this.inModal}}<label class="col-sm-2 control-label">Roles</label>{{/unless}}
+    <div {{bind-attr class="this.inModal:col-sm-12:col-sm-10"}}>
+        <div {{bind-attr class=":role-selector this.inModal:role-selector-modal"}}>
+            {{#each rol in this.roles}}
+            <a href="javascript:void(0)" {{bind-attr class="rol.isUserInRole:role-selected"}} {{action 'toggleRole' rol.RoleId}}>
+                {{#if rol.isUserInRole}}
+                    <i class="fa fa-check"></i>{{rol.RoleName}}
+                {{else}}
+                    <span></span>{{rol.RoleName}}
+                    <div class="role-delete-btn">
+                        <button type="button" class="btn btn-xs btn-danger" {{action 'deleteRole' rol.RoleId bubbles=false}} {{bind-attr disabled=rol.disableDelete}}>
+                            <i class="fa fa-trash"></i>
+                        </button>
+                    </div>
+                {{/if}}
+            </a>
+            {{/each}}
+        </div>
+        {{#if showAdd}}
+        <div {{bind-attr class=":input-group :margin-top-5 this.isValidated::input-group-error"}}>
+            {{input type="text" class="form-control" placeholder="Nuevo Rol" value=newRoleText}}
+            <span class="input-group-btn">
+                <button class="btn btn-primary" type="button" {{action 'saveRole'}}>
+                    <i class="fa fa-save"></i>
+                </button>
+            </span>
+        </div>
+        <div {{bind-attr id=this.errorDivId}} class="validation-error margin-top-5 margin-left-5">
+            {{#if this.errortype}}
+                El nombre del Rol es requerido
+            {{else}}
+                El Rol ya existe
+            {{/if}}
+        </div>
+        {{/if}}
+    </div>
+</div>
+
+<style>
+    .role-selector {
+        padding: 6px;
+        border: solid 1px #d2d6de;
+    }
+
+        .role-selector > a {
+            position:relative;
+            display: block;
+            padding: 6px 12px;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+
+            .role-selector > a:not(:last-of-type) {
+                margin-bottom: 3px;
+            }
+
+            .role-selector > a > span,
+            .role-selector > a > i {
+                display: inline-block;
+                min-width: 14px;
+                margin-right: 15px;
+            }
+
+            .role-selector > a:hover {
+                background-color: #eee !important;
+            }
+
+            .role-selector > a.role-selected {
+                background-color: #00a65a;
+                color: white !important;
+            }
+
+                .role-selector > a.role-selected:hover {
+                    background-color: #008749 !important;
+                }
+
+        .role-selector.role-selector-modal {
+            border: none !important;
+            background-color: white;
+        }
+
+    .role-delete-btn {
+        position: absolute;
+        top: 3.5px;
+        left: 9px;
+    }
+</style>

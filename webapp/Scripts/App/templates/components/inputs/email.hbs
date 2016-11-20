@@ -1,0 +1,52 @@
+﻿<div {{bind-attr class=":form-group this.labelText::no-margin-bottom"}}>
+    {{#if this.labelText}}
+    <label {{bind-attr for=this.inputId class="this.labelSm2:col-sm-2:col-sm-4 :control-label"}}>
+        {{this.labelText}}
+        {{#if this.cfg.addEnabled}}
+        &nbsp;<button class="btn btn-xs btn-success" {{action 'addEmail'}} {{bind-attr disabled=addDisabled}}><i class="fa fa-plus"></i></button>
+        {{/if}}
+    </label>
+    {{/if}}
+    <div {{bind-attr class="this.inputCellClass"}}>
+        <table {{bind-attr id=this.inputId}} class="e-mail-list">
+            {{#each email in this.data}}
+            <tr>
+                <td>
+                    {{input type="email" class=email.css id=email.inputId value=email.value placeholder=email.placeholder disabled=email.disabled}}
+                </td>
+                <td>
+                    {{#if email.predeterminado}}
+                    <i class="fa fa-star email-predeterminado" data-toggle="tooltip" data-placement="top" title="Predeterminado"></i>
+                    {{else}}
+                    <button type="button" class="btn btn-xs btn-default" {{action 'predeterminado' email.order}}>
+                        <i class="fa fa-star-o"></i>
+                    </button>
+                    {{/if}}
+                </td>
+                <td>
+                    <button type="button" class="btn btn-xs btn-default" {{bind-attr disabled=email.downDisabled}} {{action 'down' email.order}}>
+                        <i class="fa fa-arrow-down"></i>
+                    </button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-xs btn-default" {{bind-attr disabled=email.upDisabled}} {{action 'up' email.order}}>
+                        <i class="fa fa-arrow-up"></i>
+                    </button>
+                </td>
+                <td>
+                    {{#if email.toRemove}}
+                    <button type="button" class="btn btn-xs btn-default" {{action 'remove' email.order}}>
+                        <i class="fa fa-undo"></i>
+                    </button>
+                    {{else}}
+                    <button type="button" class="btn btn-xs btn-default" {{bind-attr disabled=email.disabled}} {{action 'remove' email.order}}>
+                        <i class="fa fa-trash"></i>
+                    </button>
+                    {{/if}}
+                </td>
+            </tr>
+            {{/each}}
+        </table>
+        {{#if this.errorText}}<div {{bind-attr id=this.errorDivId}} class="validation-error">{{this.errorText}}</div>{{/if}}
+    </div>
+</div>

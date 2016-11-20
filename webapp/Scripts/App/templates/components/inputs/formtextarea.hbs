@@ -1,0 +1,16 @@
+﻿<div {{bind-attr class=":form-group this.noMarginTop:no-margin-bottom"}}>
+    {{#if this.labelText}}
+    <label {{bind-attr for=this.inputId class="this.labelSm2:col-sm-2:col-sm-4 :control-label"}}>
+        {{{this.labelText}}}
+        {{#if this.optionalText}}
+            <br />
+            <span style="font-size: 12px; font-weight: initial">
+                {{{this.optionalText}}}
+            </span>
+        {{/if}}
+    </label>
+    {{/if}}
+    <div {{bind-attr class="this.inputCellClass"}}>
+        {{textarea class="form-control" id=this.inputId value=this.cvalue placeholder=this.placeholder rows=this.rows disabled=this.cdisabled}}
+    </div>
+</div>

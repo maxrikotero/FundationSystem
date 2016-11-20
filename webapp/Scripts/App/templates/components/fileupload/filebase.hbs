@@ -1,0 +1,20 @@
+﻿<form action="/api/upload" enctype="multipart/form-data" {{bind-attr class="config.cid :uploadfile" }}>
+    <div class="row">
+        <div {{bind-attr class=":col-xs-12 cfg.center:text-center"}}>
+            <span class="input-group-btn">
+                <span {{bind-attr class=":btn-file :btn :btn-primary showSelect::pull-left showSelect::hidden" }}>
+                    Seleccione un archivo
+                    <input type="file" {{bind-attr id="cfg.id" name="cname" accept="caccept" value="cvalue"}} class="file-uploader">
+                </span>
+                {{#if showSelect}}
+                {{#unless cfg.auto}}
+                <span class="btn btn-success btn-file pull-right" {{action 'save'}}><i class="fa fa-save"></i></span>
+                {{/unless}}
+                {{/if}}
+                {{#unless showSelect}}
+                <span class="btn btn-primary btn-file upload-remove-btn pull-right" {{action deleteFile}}>Eliminar</span>
+                {{/unless}}
+            </span>
+        </div>
+    </div>
+</form>

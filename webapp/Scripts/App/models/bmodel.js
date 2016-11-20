@@ -1,0 +1,1 @@
+﻿App.imacmodel = Ember.Object.extend(App.Serializable, {});

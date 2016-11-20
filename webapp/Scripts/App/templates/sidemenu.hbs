@@ -1,0 +1,61 @@
+﻿<aside class="main-sidebar">
+    <section class="sidebar">
+        <!-- Search Form -->
+        <form {{action 'search' model.searchTerm on='submit'}} class="sidebar-form">
+            <div class="input-group">
+                {{input type="text" class="form-control" placeholder="Buscar..." value=model.searchTerm}}
+                <span class="input-group-btn">
+                    <button type="submit" name="search" class="btn btn-flat"><i class="fa fa-search"></i></button>
+                </span>
+            </div>
+        </form>
+        <!-- Sidebar Menu -->
+        <ul class="sidebar-menu">
+            <!--<li class="header">HEADER</li>-->
+            <!-- Optionally, you can add icons to the links -->
+            <!--<li class="active"><a href="#"><i class="fa fa-link"></i> <span>Link</span></a></li>
+            <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>-->
+            <li {{bind-attr class="activePage.dashboard:active"}}>
+                {{#link-to 'dashboard'}}
+                <i class="imac-tablero"></i> <span>Tablero</span>
+                {{/link-to}}
+            </li>
+            <li {{bind-attr class="activePage.ambulatorio:active"}}>
+                {{#link-to 'ambulatorio'}}
+                <i class="fa fa-ambulance"></i> <span>Servicio Ambulatorio</span>
+                {{/link-to}}
+            </li>
+        {{#if session.isServerAdmin}}
+            <li {{bind-attr class=":treeview activePage.usuarios:active"}}>
+                <a href="javascript:void(0)"><i class="imac-usuario"></i> <span>Usuarios</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a href="javascript:void(0)" {{action 'nuevoUsuario'}}>Agregar Usuario</a></li>
+                    <li>{{#link-to 'usuarios'}}Listar usuarios{{/link-to}}</li>
+                </ul>
+            </li>
+        {{/if}}
+            <li {{bind-attr class=":treeview activePage.pacientes:active"}}>
+                <a href="javascript:void(0)"><i class="imac-paciente"></i> <span>Pacientes</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a href="javascript:void(0)" {{action 'nuevoPaciente'}}>Agregar Paciente</a></li>
+                    <li>{{#link-to 'pacientes'}}Listar pacientes{{/link-to}}</li>
+                </ul>
+            </li>
+            <li {{bind-attr class=":treeview activePage.medicos:active"}}>
+                <a href="javascript:void(0)"><i class="imac-medico"></i> <span>Médicos</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a href="javascript:void(0)" {{action 'nuevoMedico'}}>Agregar Médico</a></li>
+                    <li>{{#link-to 'medicos'}}Listar médicos{{/link-to}}</li>
+                </ul>
+            </li>
+            <li {{bind-attr class=":treeview activePage.habitaciones:active"}}>
+                <a href="javascript:void(0)"><i class="imac-habitacion"></i> <span>Habitaciones</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li>{{#link-to 'habitaciones'}}Administrar Habitaciones{{/link-to}}</li>
+                    <li>{{#link-to 'alimentacion'}}Control de Alimentación{{/link-to}}</li>
+                </ul>
+            </li>
+        </ul><!-- /.sidebar-menu -->
+    </section>
+    <!-- /.sidebar -->
+</aside>

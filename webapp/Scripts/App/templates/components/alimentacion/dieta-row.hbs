@@ -1,0 +1,47 @@
+﻿<td {{bind-attr class="this.dieta.isBlocked:a-d-t-success:a-d-t-danger"}}>
+    <i {{bind-attr class=":fa this.dieta.isBlocked:fa-check:fa-times"}}></i>
+</td>
+<td {{bind-attr class="this.dieta.isDelivered:a-d-t-success:a-d-t-danger"}}>
+    <i {{bind-attr class=":fa this.dieta.isDelivered:fa-check:fa-times"}}></i>
+</td>
+<td>
+    {{this.dieta.dDietaMomento}}
+</td>
+<td>
+    {{#if this.editView}}
+    <table class="alimentacion-dieta-edit-table">
+        <tr>
+            <td>
+                {{Select-Comp value=this.dieta.tipoId content=this.tiposDieta placeholder=this.dieta.placeholder}}
+            </td>
+            <td>
+                <button type="button" class="btn btn-xs btn-success" {{action 'save'}} data-toggle="tooltip" data-placement="top" title="Guardar">
+                    <i class="fa fa-save"></i>
+                </button>&nbsp;
+                <button type="button" class="btn btn-xs btn-danger" {{action 'cancel'}} data-toggle="tooltip" data-placement="top" title="Cancelar">
+                    <i class="fa fa-times"></i>
+                </button>
+            </td>
+        </tr>
+    </table>
+    {{else}}
+    <table class="alimentacion-dieta-show-table">
+        <tr>
+            <td>
+                {{#if this.dieta.isNull}}
+                <span class="no-data">No cargado</span>
+                {{else}}
+                {{this.dieta.dTexto}}
+                {{/if}}
+            </td>
+            {{#if this.canEdit}}
+            <td>
+                <button type="button" class="btn btn-xs btn-success" {{action 'edit'}} {{bind-attr disabled="this.disableEdit"}} data-toggle="tooltip" data-placement="top" title="Editar">
+                    <i class="fa fa-pencil"></i>
+                </button>
+            </td>
+            {{/if}}
+        </tr>
+    </table>
+    {{/if}}
+</td>

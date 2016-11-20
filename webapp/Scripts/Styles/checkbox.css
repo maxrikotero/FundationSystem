@@ -1,0 +1,235 @@
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css);
+
+/* #### checkbox buttons #### */
+
+input[type="checkbox"].css3checkbox {
+    display: none;
+}
+
+label.toggler { /* checkbox label */
+    display: block;
+    position: relative;
+    padding-left: 32px; /* space to the left of label text */
+    padding-top: 2px;
+    margin-bottom: 1em; /* bottom spacing */
+    cursor: pointer;
+}
+
+    label.toggler::before { /* flat box */
+        content: '';
+        display: block;
+        position: absolute;
+        width: 25px;
+        height: 25px;
+        /*background: #B1E5EF;*/
+        background: #EFEFEF;
+        /*box-shadow: 0 0 3px #BFDEFC inset;*/
+        box-shadow: 0 0 3px #000 inset;
+        left: 0;
+        top: 0;
+    }
+
+    label.toggler::after { /* check mark inside flat box*/
+        content: '\f00c'; /* fontAwesome icon font unicode. See http://fortawesome.github.io/Font-Awesome/cheatsheet/ for others */
+        position: absolute;
+        left: 3px;
+        top: 3px;
+        font: bold 18px FontAwesome;
+        /*color: #1B4977;*/
+        color: #55a2df;
+        width: 0; /* hide check mark initially */
+        text-shadow: 0 0 2px #eee;
+        overflow: hidden;
+    }
+
+input[type="checkbox"]:checked + label.toggler::after { /* check mark when checkbox is checked */
+    transition: width 0.2s; /* CSS3 transition on width property */
+    width: 25px; /* expand check mark to show it. Value should reflect that of container box */
+}
+
+/* #### radio buttons #### */
+
+input[type="radio"].css3radio {
+    display: none;
+}
+
+label.toggler_r { /* radio label */
+    display: block;
+    position: relative;
+    padding-left: 25px; /* space to the left of label text */
+    padding-right: 10px;
+    line-height: 20px;
+    /*margin-bottom: 1em;  bottom spacing */
+    cursor: pointer;
+}
+
+    label.toggler_r::before { /* outer round circle */
+        content: '';
+        display: block;
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        /*background: #B1E5EF;*/
+        background: #EFEFEF;
+        /*box-shadow: 0 0 3px #BFDEFC inset;*/
+        box-shadow: 0 0 3px #000 inset;
+        border-radius: 25px;
+        left: 0;
+        top: 0;
+    }
+
+    label.toggler_r::after { /* inner dark circle */
+        content: '';
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        border-radius: 15px;
+        left: 4px;
+        top: 4px;
+        overflow: hidden;
+        transition: all 0.2s; /* CSS3 transition on dark circle */
+    }
+
+input[type="radio"]:checked + label.toggler_r::after { /* inner dark circle when radio is selected */
+    background: #55a2df;
+    box-shadow: 1px 1px 5px white;
+}
+
+label.chkSelected{
+color: #55a2df;
+}
+
+label.chk{
+padding-left: 5px;
+}
+
+input[type="radio"]:checked + label.chkSelected::after { /* inner dark circle when radio is selected */
+   color: #55a2df;
+}
+
+/********************************************************************************************************/
+
+label.toggler_r_small { /* radio label */
+    display: block;
+    position: relative;
+    padding-left: 16px; /* space to the left of label text */
+    padding-right: 5px;
+    line-height: 12.5px;
+    /*margin-bottom: 1em;  bottom spacing */
+    cursor: pointer;
+}
+
+    label.toggler_r_small::before { /* outer round circle */
+        content: '';
+        display: block;
+        position: absolute;
+        width: 12.5px;
+        height: 12.5px;
+        /*background: #B1E5EF;*/
+        background: #EFEFEF;
+        /*box-shadow: 0 0 3px #BFDEFC inset;*/
+        box-shadow: 0 0 1.5px #000 inset;
+        border-radius: 12.5px;
+        left: 0;
+        top: 0;
+    }
+
+    label.toggler_r_small::after { /* inner dark circle */
+        content: '';
+        position: absolute;
+        width: 7.5px;
+        height: 7.5px;
+        border-radius: 7.5px;
+        left: 2.5px;
+        top: 2.5px;
+        overflow: hidden;
+        transition: all 0.1s; /* CSS3 transition on dark circle */
+    }
+
+input[type="radio"]:checked + label.toggler_r_small::after { /* inner dark circle when radio is selected */
+    background: #55a2df;
+    box-shadow: 1px 1px 2.5px white;
+}
+
+.checkbox {
+    padding-left: 20px; }
+.checkbox label {
+    display: inline-block;
+    position: relative;
+    padding-left: 5px; }
+.checkbox label::before {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    left: 0;
+    margin-left: -20px;
+    border: 1px solid #cccccc;
+    border-radius: 3px;
+    background-color: #fff;
+    -webkit-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+    -o-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+    transition: border 0.15s ease-in-out, color 0.15s ease-in-out; }
+.checkbox label::after {
+    display: inline-block;
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    left: 0;
+    top: 0;
+    margin-left: -20px;
+    padding-left: 3px;
+    padding-top: 1px;
+    font-size: 11px;
+    color: #555555; }
+.checkbox input[type="checkbox"] {
+    opacity: 0; }
+.checkbox input[type="checkbox"]:focus + label::before {
+    outline: thin dotted;
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px; }
+.checkbox input[type="checkbox"]:checked + label::after {
+    font-family: 'FontAwesome';
+    content: "\f00c"; }
+.checkbox input[type="checkbox"]:disabled + label {
+    opacity: 0.65; }
+.checkbox input[type="checkbox"]:disabled + label::before {
+    background-color: #eeeeee;
+    cursor: not-allowed; }
+.checkbox.checkbox-circle label::before {
+    border-radius: 50%; }
+.checkbox.checkbox-inline {
+    margin-top: 0; }
+
+.checkbox-primary input[type="checkbox"]:checked + label::before {
+    background-color: #428bca;
+    border-color: #428bca; }
+.checkbox-primary input[type="checkbox"]:checked + label::after {
+    color: #fff; }
+
+.checkbox-danger input[type="checkbox"]:checked + label::before {
+    background-color: #d9534f;
+    border-color: #d9534f; }
+.checkbox-danger input[type="checkbox"]:checked + label::after {
+    color: #fff; }
+
+.checkbox-info input[type="checkbox"]:checked + label::before {
+    background-color: #5bc0de;
+    border-color: #5bc0de; }
+.checkbox-info input[type="checkbox"]:checked + label::after {
+    color: #fff; }
+
+.checkbox-warning input[type="checkbox"]:checked + label::before {
+    background-color: #f0ad4e;
+    border-color: #f0ad4e; }
+.checkbox-warning input[type="checkbox"]:checked + label::after {
+    color: #fff; }
+
+.checkbox-success input[type="checkbox"]:checked + label::before {
+    background-color: #5cb85c;
+    border-color: #5cb85c; }
+.checkbox-success input[type="checkbox"]:checked + label::after {
+    color: #fff; }
+
+

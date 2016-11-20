@@ -1,0 +1,19 @@
+﻿<div {{bind-attr class="includeLabels:row"}}>
+    <div {{bind-attr class="chartAreaClass"}}>
+        <canvas {{bind-attr id="cid"}}></canvas>
+    </div>
+    {{#if includeLabels}}
+    <div {{bind-attr class="labelsAreaClass :no-padding-left-md"}}>
+        <div class="padding-bottom-10">
+            {{#if showButton}}
+            <button type="button" {{bind-attr class=":btn :btn-xs cfg.button.class"}} {{action 'btnAction'}}>{{cfg.button.text}}</button>
+            {{/if}}
+        </div>
+        {{#each label in cdata.labels}}
+        <div class="chart-label">
+            <span {{bind-attr style=label.style}}>&nbsp;</span>{{label.label}}{{#if label.value}} ({{label.value}}){{/if}}
+        </div>
+        {{/each}}
+    </div>
+    {{/if}}
+</div>
